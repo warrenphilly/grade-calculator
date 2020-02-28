@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <center>
+
+            <h1>Grade Calulator</h1>
+            <nav id="navigate">
+                <a href="index.html">Home</a>
+                <a href="wpdc.html">WebPage Development Certificate</a>
+                <a href="msc.html">MircoSystems Certificate</a>
+                <a href="calc.html">Calculate Grade</a>
+            </nav>
+            
+        <h2>Calculate Your grade</h2>
+        <p>*Please select your field of study*</p>
+        <select id="Choose">
+    
+            <option>WPD Certificate</option>
+            <option>MS Certificate</option>
+        </select>
+        <button id="choice"> select</button>
+        </center>
+        <div id="results">
+            <b><p id="we" class="theForm"></p></b>
+            <div  id="container"></div>
+            <p class="output" id="score_mc"> </p>
+            <p class="output" id="grade_mc"> </p>
+            <br/>
+            <p class="output" id="score_sa"> </p>
+            <p class="output" id="grade_sa"> </p>
+            <br/>
+            <p class="output" id="score_da"> </p>
+            <p class="output" id="grade_da"> </p>
+            <br/>
+            <p class="output" id="score_fa"> </p>
+            <p class="output" id="grade_fa"> </p>
+            <br/>
+            <p class="output" id="score_ff"></p>
+            <p class="output" id="grade_ff"> </p>
+        </div>
+    
+        <form id="disappear">
+            MC Quiz:<input type='textbox' id='multi' Placeholder='Enter Score/10'>
+            Short Answer Quiz:<input type='textbox' id='short' Placeholder='Enter Score/10'>
+            WPD Project:<input type='textbox' id='project' Placeholder='Enter Score/40'>
+            Final Assessment: <input type='textbox' id='fin' Placeholder='Enter Score/40'>
+        </form>
+    
+        <script type="text/javascript">
+            var mc_ans = document.getElementById("multi").value;
+            var short_ans = document.getElementById("short").value;
+            var project = document.getElementById("project").value;
+            var final = document.getElementById("fin").value;
+    
+            document.getElementById("choice").onclick = function(){
+                var dec = document.getElementById("Choose").value;
+    
+                document.getElementById("we").innerHTML = dec;
+                if(dec=="WPD Certificate"){
+                document.getElementById("container").innerHTML ="<form class='theForm'>MC Quiz:<input type='textbox' id='multi' Placeholder='Enter Score/10'><br/>Short Answer Quiz:<input type='textbox' id='short' Placeholder='Enter Score/10'><br/>WPD Project:<input type='textbox' id='project' Placeholder='Enter Score/40'><br>Final Assessment:<input type='textbox' id='fin' Placeholder='Enter Score/40'> </form><button class='theForm , my_button' id='calculate'> Calculate Grade</button>";
+                document.getElementById("calculate").onclick= function( ){
+                        var mc_ans = document.getElementById("multi").value;
+                        var short_ans = document.getElementById("short").value;
+                        var project = document.getElementById("project").value;
+                        var final = document.getElementById("fin").value;
+    
+                    
+                        var fin_mc = (mc_ans/10)*100;
+                        var fin_short = (short_ans/10)*100;
+                        var fin_project = (project/40)*100;
+                        var fin_final = (final/40)*100;
+    
+                        if (fin_mc <= 100 && fin_mc >= 85){
+                            var mcGrade = "A";
+                        }
+                        else if (fin_mc <= 84 && fin_mc >=70){
+                            var mcGrade = "B";
+                        }
+                        else if (fin_mc <= 69 && fin_mc >=50){
+                            var mcGrade = "C";
+                        }
+                        else if (fin_mc <= 49 && fin_mc >=0){
+                            var mcGrade = "F";
+                        }
+    
+                        if (fin_short <= 100 && fin_short >= 85){
+                            var shortGrade = "A";
+                        }
+                        else if (fin_short <= 84 && fin_short >=70){
+                            var shortGrade = "B";
+                        }
+                        else if (fin_short<= 69 && fin_short >=50){
+                            var shortGrade = "C";
+                        }
+                        else if (fin_short<= 49 && fin_short >=0){
+                            var shortGrade = "F";
+                        }
+    
+                        if (fin_project<= 100 && fin_project >= 85){
+                            var projectGrade = "A";
+                        }
+                        else if (fin_project<= 84 && fin_project >=70){
+                            var projectGrade = "B";
+                        }
+                        else if (fin_project <= 69 && fin_project >=50){
+                            var projectGrade = "C";
+                        }
+                        else if (fin_project<= 49 && fin_project >=0){
+                            var projectGrade = "F";
+                        }
+    
+                        if (fin_final <= 100 && fin_final >= 85){
+                            var finalGrade = "A";
+                        }
+                        else if (fin_final <= 84 && fin_final >=70){
+                            var finalGrade = "B";
+                        }
+                        else if (fin_final <= 69 && fin_final >=50){
+                            var finalGrade = "C";
+                        }
+                        else if (fin_final<= 49 && fin_final >=0){
+                            var finalGrade = "F";
+                        }
+    
+                        
+                        
+                        var omc =(fin_mc/100)*10;
+                        var oshort =(fin_short/100)*10;
+                        var oproject =(fin_project/100)*40;
+                        var ofinal =(fin_final/100)*40;
+                        var total = omc + oshort+ oproject + ofinal;
+                        
+                        if (total<= 100 && total>= 85){
+                            var gAverage = "A";
+                        }
+                        else if (total <= 84 && total>=70){
+                            var gAverage = "B";
+                        }
+                        else if (total<= 69 && total>=50){
+                            var gAverage = "C";
+                        }
+                        else if (total<= 49 && total >=0){
+                            var gAverage= "F";
+                        }
+    
+                        document.getElementById("score_mc").innerHTML =  "Multiple Choice Percentage : " + fin_mc + "%";
+                        document.getElementById("grade_mc").innerHTML  =  "Multiple Choice Grade: " + mcGrade ;
+    
+                        document.getElementById("score_sa").innerHTML = "Short Answer Percentage : " + fin_short + "%";
+                        document.getElementById("grade_sa").innerHTML = "Short Answer Grade: " + shortGrade ;
+    
+                        document.getElementById("score_da").innerHTML = "Development Projects Percentage : " + fin_project + "%";
+                        document.getElementById("grade_da").innerHTML = "Development Project Grade: " + projectGrade ;
+    
+                        document.getElementById("score_fa").innerHTML = "Final Assessment Percentage : " + fin_final + "%";
+                        document.getElementById("grade_fa").innerHTML = "Final Assessment Grade: " + finalGrade;
+    
+                        document.getElementById("score_ff").innerHTML =  "Overall Percentage : " + total + "%";
+                        document.getElementById("grade_ff").innerHTML = "Overall Grade: " + gAverage ;
+                    }
+                }
+                else if(dec=="MS Certificate"){
+                    document.getElementById("container").innerHTML ="<form class='theForm'>MC Quiz :<input type='textbox' id='multi1' Placeholder='Enter Score/10'><br/>Short Answer Quiz 1:<input type='textbox' id='short1' Placeholder='Enter Score/20'><br/>Short Answer Quiz 2:<input type='textbox' id='project1' Placeholder='Enter Score/20'><br>Final Assessment:<input type='textbox' id='fin1' Placeholder='Enter Score/50'></form><button class='theForm , my_button' id='calculate'> Calculate Grade</button>";
+                    document.getElementById("calculate").onclick= function( ){
+                        
+                                    
+                        var mc_ans = document.getElementById("multi1").value;
+                        var short_ans = document.getElementById("short1").value;
+                        var project = document.getElementById("project1").value;
+                        var final = document.getElementById("fin1").value;
+    
+                    
+                        var fin_mc = (mc_ans/10)*100;
+                        var fin_short = (short_ans/20)*100;
+                        var fin_project = (project/20)*100;
+                        var fin_final = (final/50)*100;
+    
+                        if (fin_mc <= 100 && fin_mc >= 85){
+                            var mcGrade = "A";
+                        }
+                        else if (fin_mc <= 84 && fin_mc >=70){
+                            var mcGrade = "B";
+                        }
+                        else if (fin_mc <= 69 && fin_mc >=50){
+                            var mcGrade = "C";
+                        }
+                        else if (fin_mc <= 49 && fin_mc >=0){
+                            var mcGrade = "F";
+                        }
+    
+                        if (fin_short <= 100 && fin_short >= 85){
+                            var shortGrade = "A";
+                        }
+                        else if (fin_short <= 84 && fin_short >=70){
+                            var shortGrade = "B";
+                        }
+                        else if (fin_short<= 69 && fin_short >=50){
+                            var shortGrade = "C";
+                        }
+                        else if (fin_short<= 49 && fin_short >=0){
+                            var shortGrade = "F";
+                        }
+    
+                        if (fin_project<= 100 && fin_project >= 85){
+                            var projectGrade = "A";
+                        }
+                        else if (fin_project<= 84 && fin_project >=70){
+                            var projectGrade = "B";
+                        }
+                        else if (fin_project <= 69 && fin_project >=50){
+                            var projectGrade = "C";
+                        }
+                        else if (fin_project<= 49 && fin_project >=0){
+                            var projectGrade = "F";
+                        }
+    
+                        if (fin_final <= 100 && fin_final >= 85){
+                            var finalGrade = "A";
+                        }
+                        else if (fin_final <= 84 && fin_final >=70){
+                            var finalGrade = "B";
+                        }
+                        else if (fin_final <= 69 && fin_final >=50){
+                            var finalGrade = "C";
+                        }
+                        else if (fin_final<= 49 && fin_final >=0){
+                            var finalGrade = "F";
+                        }
+    
+                        
+                        
+                        var omc =(fin_mc/100)*10;
+                        var oshort =(fin_short/100)*20;
+                        var oproject =(fin_project/100)*20;
+                        var ofinal =(fin_final/100)*50;
+                        var total = omc + oshort+ oproject + ofinal;
+                        
+                        if (total<= 100 && total>= 85){
+                            var gAverage = "A";
+                        }
+                        else if (total <= 84 && total>=70){
+                            var gAverage = "B";
+                        }
+                        else if (total<= 69 && total>=50){
+                            var gAverage = "C";
+                        }
+                        else if (total<= 49 && total >=0){
+                            var gAverage= "F";
+                        }
+    
+                        document.getElementById("score_mc").innerHTML =  "Multiple Choice Percentage : " + fin_mc + "%";
+                        document.getElementById("grade_mc").innerHTML  =  "Multiple Choice Grade: " + mcGrade ;
+    
+                        document.getElementById("score_sa").innerHTML = "Short Answer 1 Percentage : " + fin_short + "%";
+                        document.getElementById("grade_sa").innerHTML = "Short Answer 1 Grade: " + shortGrade ;
+    
+                        document.getElementById("score_da").innerHTML = "Short Answer 2 Percentage : " + fin_project + "%";
+                        document.getElementById("grade_da").innerHTML = "Short Answer 2 Grade: " + projectGrade ;
+    
+                        document.getElementById("score_fa").innerHTML = "Final Assessment Percentage : " + fin_final + "%";
+                        document.getElementById("grade_fa").innerHTML = "Final Assessment Grade: " + finalGrade;
+    
+                        document.getElementById("score_ff").innerHTML =  "Overall Percentage : " + total + "%";
+                        document.getElementById("grade_ff").innerHTML = "Overall Grade: " + gAverage ;
+                            
+                    }
+                    }
+                    
+                }
+                    
+            
+                
+            
+        </script>
+
+
+
+</body>
+</html>
+
+
+
+
+
